@@ -1,6 +1,6 @@
 # Right Shape
 
-[Open the guide and get the skill](https://michaeljabbour.github.io/amplifier-skill-right-shape/).
+[Open the guide and get the skill](https://michaeljabbour.github.io/amplifier-skill-right-shape/). [Watch the 64-second film](https://michaeljabbour.github.io/amplifier-skill-right-shape/#film) (captioned, with a transcript and a 15-second cut).
 
 **What it is for.** You have a job you want AI to help with. Before anyone builds anything, Right Shape answers three questions: what form should it take, how much should it do on its own, and what kind of AI does it need. It explains each answer in plain words and gives you a test that shows whether the result works. Most of the time the right answer is smaller than you expected.
 
@@ -106,7 +106,7 @@ The Pages workflow builds and checks `_site/` on pushes to `main`, then publishe
 - `docs/EXAMPLES.md`: fictional worked placements and a fictional audit.
 - `docs/BENCHMARK.md`: the tests the skill has to pass. Not yet run.
 - `scripts/build.py`, `scripts/check.py`: dependency-free build and integrity checks.
-- `site/`: page template, metadata, styles, local assets and interaction code.
+- `site/`: page template, metadata, styles, local assets (including the film, its captions, poster and 15-second cut) and interaction code.
 - `_site/`: generated website and downloadable skill assets.
 
 ## Background

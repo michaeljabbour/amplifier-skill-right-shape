@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 (2026-10-28)
+
+- Add a 64-second film to the site, with captions, a transcript, a poster, a download and a 15-second cut. It shows the three questions hiding inside "make it an agent", the one-step answer, a fictional refund-inbox placement at rung 5, and the test that can fail.
+- The site check now confirms the film's files ship with the page, and still counts exactly two skill downloads.
+
 ## 0.1.1 (2026-10-28)
 
 - Open the site and README with what the skill is for, in plain words, and a three-step "how it works".
