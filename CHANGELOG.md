@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3 (2026-10-28)
+
+- Recut the film to 86 seconds. It now opens on the flood of options (skill, plugin, agent, harness and more), shows what a wrong pick costs (too big, too small, your customers find out first), and after the easy button sorts the options into the five shapes, with plugins and bundles set aside as packaging. New transcript, captions, poster and 15-second cut.
+
 ## 0.1.2 (2026-10-28)
 
 - Add a 64-second film to the site, with captions, a transcript, a poster, a download and a 15-second cut. It shows the three questions hiding inside "make it an agent", the one-step answer, a fictional refund-inbox placement at rung 5, and the test that can fail.

@@ -1,6 +1,6 @@
 # Right Shape
 
-[Open the guide and get the skill](https://michaeljabbour.github.io/amplifier-skill-right-shape/). [Watch the 64-second film](https://michaeljabbour.github.io/amplifier-skill-right-shape/#film) (captioned, with a transcript and a 15-second cut).
+[Open the guide and get the skill](https://michaeljabbour.github.io/amplifier-skill-right-shape/). [Watch the 86-second film](https://michaeljabbour.github.io/amplifier-skill-right-shape/#film) (captioned, with a transcript and a 15-second cut).
 
 **What it is for.** You have a job you want AI to help with. Before anyone builds anything, Right Shape answers three questions: what form should it take, how much should it do on its own, and what kind of AI does it need. It explains each answer in plain words and gives you a test that shows whether the result works. Most of the time the right answer is smaller than you expected.
 
