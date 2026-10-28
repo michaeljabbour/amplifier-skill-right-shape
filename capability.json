@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "right-shape",
+  "display_name": "Right Shape",
+  "kind": "skill",
+  "promise": "Choose the smallest AI shape that does the job, then name the test it must pass.",
+  "skill_path": "skills/right-shape",
+  "install_commands": [
+    "python3 scripts/capability.py install --dest ~/.agents/skills"
+  ],
+  "runtime_install_commands": [],
+  "docs": [
+    "docs/INSTALL.md"
+  ],
+  "site_builder": "native",
+  "repository_url": "https://github.com/michaeljabbour/amplifier-skill-right-shape",
+  "publication_status": "Public source, site and documented installation path are available. Evidence scopes are recorded separately."
+}

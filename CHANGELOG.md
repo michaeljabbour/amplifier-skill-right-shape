@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-28 — Public first use
+
+- Add a complete public clone/install path beside the first useful outcome, with prerequisites, safe updates and a full-folder ZIP alternative. Preserve the existing method, films and interactive examples.
+
+
 ## 0.2.2 (2026-10-28)
 
 - Merge the current public site's plain purpose, three choices, accessibility work and 86-second film with the portfolio Audit method and deterministic validators.

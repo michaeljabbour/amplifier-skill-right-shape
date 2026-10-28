@@ -6,6 +6,18 @@
 
 It works on one job ("should our support inbox get an agent?") or on a whole set of code repositories you want to tidy into installable, measurable pieces. It recommends; it does not build. It never gives an AI more freedom than its safety checks allow.
 
+## First use
+
+Bring one AI job, an existing capability or a repository portfolio. You get a placement card or an audit with source routes, limits and the next test.
+
+```sh
+git clone https://github.com/michaeljabbour/amplifier-skill-right-shape.git
+cd amplifier-skill-right-shape
+python3 scripts/capability.py install --dest ~/.agents/skills
+```
+
+Requires Git and Python 3.11+. Use the skills directory supported by your agent. Ask for Right Shape in a new session and supply one real task. The [install guide](docs/INSTALL.md) explains the complete ZIP alternative and safe updates.
+
 ## The three choices
 
 People often mix these up. "Let's build an agent" quietly answers all three at once. Right Shape answers each one separately, so you can see which choice is driving the result.
