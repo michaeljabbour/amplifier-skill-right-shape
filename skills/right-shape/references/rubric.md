@@ -62,6 +62,8 @@ Tiebreakers inside a band: it repeats and the expertise is stable, move toward a
 | G5 Budget | Hard caps on tokens, time and money exist, and model routing has been measured | 7 |
 | G6 Ownership | A named person is accountable and watches the outcomes | 6 |
 
+When a pass condition is unknown, say what evidence is missing and apply that gate's cap conservatively until it is established. Include that ID in the validator's `failed` list and explain its unknown status in the card. A portable instruction, sample benchmark or intended approval does not establish enforcement by an arbitrary host. A budget can limit loss without making an action reversible. Gate judgments and arithmetic are separate: validate both.
+
 ## Shape checks
 
 - H1 Independent verification | The thing that checks the work should differ from the thing that does it
@@ -129,8 +131,8 @@ Rules: no private or unpublished dependencies; install in three commands at most
 | Platform | A runtime, client or host that capabilities run on |
 | Park | Promising but overlapping or unfinished; harvest the useful parts |
 | Separate | A product outside this portfolio |
-| Archive | Superseded, merged, inactive or a stub |
-| Fork | A copy of someone else's project; keep only if it carries unmerged changes |
+| Archive | Retire after a verified replacement and migration, or an explicit owner decision about inactive work; preserve history, data, licenses and recovery |
+| Fork | A confirmed upstream derivative; retain attribution and assess local divergence, contribution, dependency or learning purpose before any owner decision |
 
 ## Diagnosis
 
@@ -166,12 +168,15 @@ QUESTION  <one, only if the answer would change the verdict>
 
 ### Audit report
 
-1. At a glance: counts by disposition, the number of capabilities, and the single highest-leverage move.
-2. How it was gathered, including what could not be seen.
-3. The contract, adapted to the portfolio's own house style.
-4. Each capability: source links, source design, target design, engine, benchmark, reasoning, questions.
-5. The full inventory: repository, current shape, disposition, target.
-6. Open questions for the owner, then a short sequence.
+1. At a glance: immutable source-census date/count, current-state changes separately, counts by primary disposition, distinct promises versus supporting assets, and the highest-leverage move. Counts describe reviewed records, not validated products.
+2. Collection and depth: each listing/source and revision, exclusions, inaccessible items, shallow versus body-reviewed items, and contradictions. API listings, local checkouts, search, dependency links and supplied analysis have different coverage. No exhaustive claim beyond shown evidence.
+3. Each promise: stable ID, plain name, public entry or internal procedure, assumed/confirmed audience, trigger, current pain/cost or unknown, one-sentence offer, before/after, source design, target shape/engine/owner, differentiation hypothesis, risky assumption, next validation, confidence. Similar mechanism does not prove the same job; a bundle is distribution, not a promise.
+4. Each research/evaluation claim: exact source/revision, authorship/upstream/license, method or theory, actual dated run if any, raw record, baseline/control, limits and next gate. Separate cited research, source-authored tests, AI exercises, outside-user outcomes and return. Keep negative, invalid and tied results visible.
+5. Each product-usefulness assessment, when requested: Job, First value, Fit, Outcome, Trust and Return as separate judgments with evidence and a specific first-value blocker/removal and return-validation opportunity. Use the available usefulness rubric for its scales; otherwise report observations and unknowns without inventing ratings or zones. Source, builder and AI runs do not establish outside use. No average, total or promotion into a readiness zone. For internal mechanisms, experiments, research and learning assets, record asset value, audience, retained artifact and validation question instead of a failed-product grade.
+6. Each code route: source repository/revision and exact existing file/directory; current role (method/tool/harness/adapter/eval/reference/research); existing or proposed target repository/path and owner; action from the dispositions; reason; versioned interface; consumers/dependencies; provenance and acceptance gate. A proposed path is labeled new. A shared contract does not imply a code merger. File links use the file route and directory links the directory route.
+7. Full coverage: every source repository gets one primary disposition and source bucket, with as many component routes as its distinct parts need. Reconcile embedded skill bodies, host aliases, test fixtures, upstream copies, outputs and retained research; explain every unmapped remainder. Byte-identical copies and semantic variants are different counts.
+8. Owner ledger: verified fork/visibility facts with timestamp/basis; uncertain local divergence or consumers; existing authorization and explicit naming/visibility decisions; proposals separately from applied actions and verification. No hidden/private inference from a broken link alone. An owner may retain a public fork or useful experiment without a product-readiness argument.
+9. Staged implementation: exact source-to-target change, dependency order, independent install/no-key host path where applicable, compatibility/redirect plan, acceptance evidence, rollback and unresolved decisions. Name public display name, package/repository/command aliases separately; preserve working names unless a concrete mismatch justifies a change. Retire a predecessor only after the replacement works, supported consumers/data migrate and recovery/provenance are retained. Technical value and public visibility remain separate decisions.
 
 ### Check report
 

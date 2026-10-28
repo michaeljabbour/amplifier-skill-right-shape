@@ -36,6 +36,8 @@ Open `http://127.0.0.1:8000`. The build uses only Python's standard library.
   dispositions, diagnosis and benchmark rows. Do not fork the method into another
   content file.
 
+The portable ZIP also includes the conditional Audit reference, MIT notice and optional arithmetic validator. The builder imports the same validator/parser, so there is no second set of gate values.
+
 ## Theme provenance
 
 `theme/style.css` is an unmodified snapshot of the Amplifier Smart Tools family theme

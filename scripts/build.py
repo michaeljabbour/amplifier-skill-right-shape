@@ -10,7 +10,7 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL_DIR = ROOT / 'skills/right-shape'
-SKILL_FILES = ('SKILL.md', 'references/rubric.md')
+SKILL_FILES = ('SKILL.md', 'references/rubric.md', 'references/audit.md', 'scripts/validate_placement.py', 'LICENSE')
 ARCHIVE_DATE = (2026, 10, 28, 0, 0, 0)
 
 
@@ -18,94 +18,10 @@ def escape(value):
     return html.escape(str(value), quote=True)
 
 
-def section(markdown, heading):
-    """Return the body of one '## heading' section."""
-    match = re.search(rf'^## {re.escape(heading)}\n(.*?)(?=^## |\Z)', markdown, re.M | re.S)
-    if not match:
-        raise ValueError(f'Missing section: {heading}')
-    return match.group(1)
-
-
-def table_rows(block):
-    rows = [line for line in block.splitlines() if line.startswith('|')]
-    return [[cell.strip() for cell in row.strip('|').split('|')] for row in rows[2:]]
-
-
-def bullets(block):
-    return [line[2:].split(' | ') for line in block.splitlines() if line.startswith('- ')]
-
-
-def read_rubric(rubric, benchmark):
-    # The site presents the canonical method, never a second copy of it.
-    r = {
-        'questions': re.findall(r'^\d\. (.+)$', section(rubric, 'Sorting questions'), re.M),
-        'shapes': bullets(section(rubric, 'Shapes')),
-        'need': bullets(section(rubric, 'Need dimensions')),
-        'need_map': table_rows(section(rubric, 'Need to rung')),
-        'ladder': bullets(section(rubric, 'Ladder')),
-        'gates': table_rows(section(rubric, 'Gates')),
-        'checks': bullets(section(rubric, 'Shape checks')),
-        'engines': table_rows(section(rubric, 'Engines')),
-        'replace': bullets(section(rubric, 'Replaceability')),
-        'evals': table_rows(section(rubric, 'Evaluation ladder')),
-        'contract': re.search(r'```\n(.*?)```', section(rubric, 'Capability contract'), re.S).group(1),
-        'dispositions': table_rows(section(rubric, 'Dispositions')),
-        'diagnosis': table_rows(section(rubric, 'Diagnosis')),
-        'tests': table_rows(section(benchmark, 'Tests')),
-    }
-    expect = {'questions': (4, None), 'shapes': (6, 2), 'need': (4, 5), 'need_map': (6, 2), 'ladder': (10, 4),
-              'gates': (6, 3), 'checks': (4, 2), 'engines': (3, 3), 'replace': (5, 2), 'evals': (5, 3),
-              'dispositions': (11, 2), 'diagnosis': (8, 3), 'tests': (12, 3)}
-    for key, (count, width) in expect.items():
-        rows = r[key]
-        if len(rows) != count or (width and any(len(row) != width for row in rows)):
-            raise ValueError(f'Rubric section {key}: expected {count} rows of {width} fields')
-    if [int(row[0]) for row in r['ladder']] != list(range(10)):
-        raise ValueError('The ladder must run from rung 0 to rung 9')
-    # Need score bands, for example "0 to 1" -> rung 1, must cover 0 to 12 exactly once.
-    bands = []
-    for span, rung in r['need_map']:
-        low, high = (int(x) for x in span.split(' to '))
-        bands.append((low, high, int(rung)))
-    covered = [s for low, high, _ in bands for s in range(low, high + 1)]
-    if covered != list(range(13)):
-        raise ValueError('Need-to-rung bands must cover scores 0 to 12 exactly once')
-    r['bands'] = bands
-    r['caps'] = {row[0].split()[0]: int(row[2]) for row in r['gates']}
-    return r
-
-
-def need_rung(score, bands):
-    return next(rung for low, high, rung in bands if low <= score <= high)
-
-
-def place(example, r):
-    """Recompute a fictional placement from the rubric and refuse one that does not follow it."""
-    eid = example['id']
-    need = example['need']
-    if len(need) != 4 or any(v not in (0, 1, 2, 3) for v in need):
-        raise ValueError(f'{eid}: need is four scores from 0 to 3')
-    score = sum(need)
-    wanted = need_rung(score, r['bands'])
-    unknown = set(example['failed']) - set(r['caps'])
-    if unknown:
-        raise ValueError(f'{eid}: unknown gates {sorted(unknown)}')
-    ceiling = min([r['caps'][g] for g in example['failed']] or [9])
-    expected = min(wanted, ceiling)
-    rung = example['rung']
-    if rung > expected:
-        raise ValueError(f'{eid}: rung {rung} is above min(need {wanted}, ceiling {ceiling})')
-    if rung < expected and not example.get('tiebreak'):
-        raise ValueError(f'{eid}: a rung below {expected} needs a stated tiebreak')
-    if (wanted > ceiling) != bool(example.get('honest_move')):
-        raise ValueError(f'{eid}: an honest move is required exactly when need exceeds the ceiling')
-    check_ids = {row[0].split()[0] for row in r['checks']}
-    if not set(example['checks']) <= check_ids:
-        raise ValueError(f'{eid}: unknown shape checks')
-    shape = 'Outer harness behind an agent interface' if len(example['checks']) >= 2 else 'Single worker'
-    if example['engine'] not in {row[0] for row in r['engines']}:
-        raise ValueError(f'{eid}: unknown engine')
-    return score, wanted, ceiling, shape
+# One parser/validator is shared by the site and the portable skill.
+import sys
+sys.path.insert(0, str(SKILL_DIR / 'scripts'))
+from validate_placement import section, table_rows, bullets, read_rubric, need_rung, place
 
 
 def ladder_svg(example, r, score, wanted, ceiling):
@@ -238,7 +154,7 @@ def build(output):
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(SKILL_DIR / name, target)
     documentation = ['README.md', 'LICENSE', 'CHANGELOG.md', 'site/README.md', 'site/theme/LICENSE']
-    documentation.extend(str(path.relative_to(ROOT)) for path in sorted((ROOT / 'docs').glob('*.md')))
+    documentation.extend(str(path.relative_to(ROOT)) for path in sorted((ROOT / 'docs').rglob('*')) if path.is_file())
     for name in documentation:
         target = output / name
         target.parent.mkdir(parents=True, exist_ok=True)

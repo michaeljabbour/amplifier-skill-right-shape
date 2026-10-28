@@ -12,9 +12,25 @@ This project pairs the [`right-shape` skill](skills/right-shape/SKILL.md) and it
 
 Give an agent the skill and the work: a job description, an idea, one repository, or a list of repositories. Say which mode you want, or let it choose. Expect a verdict in the first sentence, one question at most, and a card or report at the end.
 
-If your tool supports reusable skills, copy the `skills/right-shape/` directory (`SKILL.md` plus `references/rubric.md`) according to that tool's instructions. Keep the relative `references/` path intact.
+If your tool supports reusable skills, copy the complete `skills/right-shape/` directory according to that tool's instructions. Keep `references/`, the optional Python validator in `scripts/`, and the MIT notice intact. The method works without Python; the validator checks placement arithmetic when Python is available.
 
-### In Amplifier
+## Audit a whole portfolio
+
+Audit reads inside repositories and groups distinct user promises across them. It returns exact existing source paths, proposed owners and targets, interfaces, source coverage, install blockers, research provenance and staged changes with gates and rollback. A public entry, a reusable engine and a learning experiment can have different destinations. Useful experiments do not need product grades to justify retaining them.
+
+The [Audit workflow](skills/right-shape/references/audit.md) explains collection depth, promise and mechanism boundaries, optional market-fit/usefulness evidence, code routing and retirement after verified replacement. The [rubric](skills/right-shape/references/rubric.md) remains the single source for report records and dispositions. An audit plan does not authorize publication, visibility changes or source retirement. Already authorized work and owner decisions remain in force.
+
+> Audit these repositories beyond their READMEs. Find the distinct promises, embedded methods and useful mechanisms. Give every source an exact route or retained bucket, distinguish evidence from hypotheses, and show a reversible implementation sequence. Keep learning experiments and confirmed owner decisions intact.
+
+To check a placement's arithmetic, give the bundled validator one JSON object. For example, from this checkout:
+
+```sh
+python3 skills/right-shape/scripts/validate_placement.py --input placement.json
+```
+
+The input uses `need` (four integers), `failed` (gate IDs), `checks` (shape-check IDs), `engine`, and optional `rung`, `need_score`, `need_rung`, `ceiling`, `tiebreak` and `honest_move`. A false ceiling or a placement above it exits with an error. This checks arithmetic and recognized labels; it cannot establish that the gate judgments or utility claims are true.
+
+## In Amplifier
 
 This repository is also an Amplifier bundle (`right-shape`). Add its behavior to your current host:
 
@@ -72,6 +88,8 @@ The Pages workflow builds and checks `_site/` on pushes to `main`, then publishe
 
 - `skills/right-shape/SKILL.md`: the method.
 - `skills/right-shape/references/rubric.md`: the scales, gates, checks, engines, contract, dispositions, diagnosis table, card templates and voice.
+- `skills/right-shape/references/audit.md`: the conditional portfolio workflow, with source-depth, ownership, evidence and reversible-migration guidance.
+- `skills/right-shape/scripts/validate_placement.py`: the portable arithmetic validator; the site imports the same parser.
 - `bundle.md`, `behaviors/right-shape.yaml`: the Amplifier bundle and its installable behavior.
 - `modes/shape.md`: the `/shape` mode.
 - `recipes/right-shape-audit.yaml`: one staged, human-gated audit.

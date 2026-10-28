@@ -1,7 +1,7 @@
 {
   "name": "amplifier-skill-right-shape",
   "displayName": "Right Shape",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A placement and audit skill: decides what shape a piece of AI work should take, how much autonomy it can safely have, which engine it needs, and how to benchmark it; audits repositories into self-contained, measurable capabilities. Includes a static explanatory site.",
   "kind": "skill",
   "engine": "llm",

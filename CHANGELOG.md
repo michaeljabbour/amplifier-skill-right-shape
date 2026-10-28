@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0 (2026-10-28)
+
+- Expand Audit from repository dispositions into source-depth, distinct promises, embedded methods, exact component ownership and versioned interfaces. Keep product evidence separate from retained experiment and learning value.
+- Add an optional Audit workflow; expand only the canonical rubric’s report records. Preserve owner authority, current versus proposed visibility, research/license provenance, independent installs and retirement after verified replacement.
+- Reuse the site’s canonical parser in a portable deterministic placement validator. Reject false claimed sums, need rungs or ceilings and invalid rung values; keep gate truth and usefulness outside its claim.
+- Preserve observed model-authored arithmetic failures as regression inputs; add exhaustive need/gate combinations and a copied-folder CLI check. This is conformance testing, not the full behavioral benchmark.
+- Add a fictional multi-repository forward exercise and deepen the guide, examples and portable distribution; retain one canonical SKILL.md and the MIT notice.
+
 ## 0.1.0 (2026-10-28)
 
 - Add the `right-shape` skill with three modes: Place one job, Audit a set of repositories, and Check one capability against the contract.

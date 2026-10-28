@@ -1,6 +1,6 @@
 bundle:
   name: right-shape-behavior
-  version: 0.1.0
+  version: 0.2.0
   description: |
     Wires the right-shape skill (tool-skills), the /shape mode (hooks-mode), and a
     staged audit recipe (tool-recipes) onto a host bundle. Adds no context of its

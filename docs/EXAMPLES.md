@@ -81,3 +81,15 @@ QUESTION  none
 | sim-world | Fork | Fork | Upstream simulator |
 
 **Questions for the owner.** Publish the vision dependency or vendor it? Does the ros-bridge fork carry changes? Should Field Log keep its old name for existing users?
+
+## Audit: a mixed note-tool and learning portfolio
+
+This example is fictional. A six-repository lab contains a formatter, a note-review method, an old review alias, two different UI event handlers, a BASIC learning interpreter, an upstream contribution fork and a gallery output. The complete supplied exercise lives under `evals/audit-forward/`.
+
+The right first move is a portable note-review entry and a tested UI event contract. The formatter can remain a deterministic tool. The BASIC implementation and gallery retain their runnable/learning value. The upstream fork remains attributed and public because that is the owner's settled choice.
+
+One source route is `workpad/skills/review/SKILL.md` → a proposed `note-review/skills/note-review/` method. `old-review/SKILL.md` contributes the preserved-baseline idea after license and semantic comparison; keep its alias until consumers are known. The formatter stays at `workpad/src/format.py`, with a documented input/output contract and a clean-install test before any independence claim.
+
+`workpad/src/client/events.js` and `pad-ui/src/events.js` both consume events, but the latter preserves pending approvals. Similar syntax is insufficient evidence to merge them. Replay one approval, later text, reconnect and cancellation sequence against both. A shared event-state adapter is a proposal; retain the experiments and rollback until the interaction contract holds.
+
+The required store link returns 404. That is an installation blocker and a limit on current evidence, not proof that the dependency is still private. One builder trial establishes neither product-market fit nor outside return. Without a supplied usefulness rubric, list observations and unknowns rather than inventing six ratings. No owner was contacted and no repository was hidden, merged or retired by this fictional audit.

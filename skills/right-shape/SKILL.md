@@ -11,7 +11,7 @@ user-invocable: true
 
 Answer one question well: what form should this piece of AI work take, and how will anyone know it works? Place the job on an autonomy ladder, decide what face it shows (a function, an agent or a protocol), name its engine, check that it can be replaced, and write the benchmark that would prove it. Then stop.
 
-The canonical scales, gates, checks, templates and voice examples are in references/rubric.md (paths are relative to this skill's directory). Use them exactly. Do not invent new levels or soften a gate.
+The canonical scales, gates, checks, templates and voice examples are in [references/rubric.md](references/rubric.md). Use them exactly. Do not invent new levels or soften a gate. For a portfolio Audit, also read [references/audit.md](references/audit.md); Place and Check do not need it.
 
 ## Sound like a sharp reviewer
 
@@ -34,7 +34,7 @@ Choose from the request. Ask only when it is truly ambiguous.
 
 1. **Sort.** Answer the four sorting questions in the rubric in one line each.
 2. **Score the need.** Rate N1 to N4 from 0 to 3 using the rubric's descriptions. Score the smallest version of the job that would genuinely help, not the most ambitious one. Add them and map the score to a rung. Apply the tiebreakers inside the band.
-3. **Set the ceiling.** Check G1 to G6. Each failed gate caps the rung; the lowest cap wins. The rung is the need or the ceiling, whichever is lower.
+3. **Set the ceiling.** Check G1 to G6. Each failed gate caps the rung; the lowest cap wins. The rung is the need or the ceiling, whichever is lower. Where Python is available, pass the scores and failed gates through [scripts/validate_placement.py](scripts/validate_placement.py) before returning the card. It checks arithmetic against the bundled rubric; it cannot establish whether your gate judgments are true. Without a runner, show the addition and the minimum explicitly and label the arithmetic manually checked.
 4. **When need exceeds the ceiling, say so** and offer the honest moves: lower the need (decompose, fix the path into a recipe, seal stable expertise inside a Smart Tool) or raise the ceiling (add an evaluator, put irreversible calls behind approval, remove one leg of the trifecta, isolate it, set budgets, name an owner). Never grant the autonomy anyway.
 5. **Choose the shape.** Count H1 to H4. Zero or one: a single tool, skill or agent. Two or more: an outer harness behind an agent interface, or behind a function when the result is bounded and checkable. H4 alone: decompose first. Composition never raises the ceiling.
 6. **Name the engine.** LLM, decision model or both, as the rubric defines them. Prefer a measured rule to a model when the measurement ties. Do not add a decision model to work whose value is human judgment.
@@ -44,15 +44,14 @@ Choose from the request. Ask only when it is truly ambiguous.
 
 ## Audit
 
-1. **Inventory everything in scope.** Read each README, manifest, top-level layout, tests, evals and dependency sources. If the full listing is unreachable, find items by search and by following links between them, and say so in the report. Never claim a complete inventory you cannot show.
-2. **Classify each item's current shape:** skill, Smart Tool, bundle, module, MCP server, app or platform, documentation, template, fork, stub or deprecated.
-3. **Flag blockers:** private or unpublished dependencies, secrets read from anywhere but environment variables, size swollen by media or research history, two repositories keeping one promise, one repository keeping two, and links to archived or renamed work.
-4. **Group by promise, not by technology.** One promise, one capability.
-5. **Place each capability** with the Place steps, briefly.
-6. **Give every item exactly one disposition** from the rubric's table.
-7. **Look for shared machinery** worth extracting once. A single honest evaluation harness used by every capability usually beats every other consolidation.
-8. **List the owner's decisions** as questions: naming, forks that may carry unmerged changes, private dependencies, overlapping promises, and anything public that might be internal.
-9. **Write the audit report** using the rubric's outline. For each capability give source links, source design, target design, engine, benchmark, reasoning and questions. When the report is meant to be kept or shared, deliver it as a document or page, not only in chat.
+Follow the conditional Audit workflow and the rubric's audit records. A repository is an inventory unit, not automatically a capability or a brand.
+
+1. Establish a dated source census, coverage depth and gaps. Inspect embedded methods, code, tests, dependencies and research beyond the README.
+2. Map distinct user promises and valuable mechanisms inside and across repositories. Separate product evidence from experiment, learning and infrastructure value.
+3. Place each proposed capability; name its method owner, engine, public entry and independent install route. Keep usefulness evidence separate from architecture.
+4. Route exact existing paths to explicit owners and interfaces. Distinguish extraction, shared contracts, retained engines and compatibility aliases from physical mergers.
+5. Reconcile every source and embedded method to a destination or retained source bucket. Keep observed facts, proposed actions, owner decisions and applied changes separate.
+6. Deliver one source-bound report and staged plan with gates and rollback. Stop at the authorized scope; an audit recommendation is not permission to publish, hide, archive, delete or detach.
 
 ## Check
 

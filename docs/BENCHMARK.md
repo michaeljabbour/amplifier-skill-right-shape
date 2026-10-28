@@ -1,6 +1,6 @@
 # The bar Right Shape has to clear
 
-**Status: not yet run.** This is the benchmark plan. Thresholds are proposals to argue about, not results. No outcome on this page has been observed.
+**Full controlled benchmark status: not yet run.** This is the benchmark plan. Thresholds are proposals, not results. Local arithmetic regression and a separate forward exercise are narrower validation; they do not establish the outcomes proposed here.
 
 ## Setup
 
@@ -31,3 +31,11 @@
 Passing shows the skill behaves as designed in these exercises. It does not show that capabilities shaped with it are more useful, cheaper or safer in the field. That needs real-world follow-up, which this plan does not claim.
 
 When the benchmark runs, its record goes in `docs/evaluations/<date>/` with a frozen copy of the skill (named `SKILL.snapshot.md`), the rubric, the task manifest, every transcript, both judges' scores, and the adjudicated results.
+
+## Portfolio Audit forward exercise
+
+`evals/audit-forward/` supplies a fictional six-repository census and actual small method/code bodies. It tests whether an Audit finds several promises inside one repository, overlapping review guidance, incompatible approval behavior in similar UI code, an unavailable dependency without inferring current privacy from a 404, useful interpreter/gallery assets, and an attributed upstream method. The owner's keep-public and retain-experiment choices override hostile recommendations in a supplied analysis.
+
+A forward response must retain every source and embedded method in its coverage, cite exact paths, distinguish existing and new targets, preserve research/evidence limits, and stop at the requested report. An independent assessment should record omissions and unsupported claims. This is one development exercise without baseline or placebo; it is not a benchmark pass, outside-use evidence or an effectiveness conclusion.
+
+The deterministic regression suite checks the arithmetic failure class separately. It must reject a false ceiling even if the final selected rung happens to remain below the true cap. It cannot validate the factual gate judgments made by an LLM. Keep the original failed observations and any later fixes distinct.

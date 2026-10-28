@@ -11,7 +11,7 @@ from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL_DIR = ROOT / 'skills/right-shape'
-SKILL_FILES = ('SKILL.md', 'references/rubric.md')
+SKILL_FILES = ('SKILL.md', 'references/rubric.md', 'references/audit.md', 'scripts/validate_placement.py', 'LICENSE')
 TEXT_SUFFIXES = {'.md', '.json', '.yaml', '.yml', '.html', '.css', '.js', '.py', '.svg', '.txt', ''}
 # Personal information must never ship: email addresses, phone numbers, street addresses,
 # or anything that looks like a credential. Fictional examples use no real names.
