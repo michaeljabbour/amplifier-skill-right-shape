@@ -45,7 +45,7 @@ def read_rubric(rubric, benchmark=None):
         'diagnosis': table_rows(section(rubric, 'Diagnosis')),
     }
     expect = {'questions': (4, None), 'shapes': (6, 2), 'need': (4, 5), 'need_map': (6, 2), 'ladder': (10, 4),
-              'gates': (6, 3), 'checks': (4, 2), 'engines': (3, 3), 'replace': (5, 2), 'evals': (5, 3),
+              'gates': (6, 3), 'checks': (4, 2), 'engines': (4, 3), 'replace': (5, 2), 'evals': (5, 3),
               'dispositions': (11, 2), 'diagnosis': (8, 3)}
     if benchmark is not None:
         r['tests'] = table_rows(section(benchmark, 'Tests'))

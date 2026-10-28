@@ -37,7 +37,7 @@ Choose from the request. Ask only when it is truly ambiguous.
 3. **Set the ceiling.** Check G1 to G6. Each failed gate caps the rung; the lowest cap wins. The rung is the need or the ceiling, whichever is lower. Where Python is available, pass the scores and failed gates through [scripts/validate_placement.py](scripts/validate_placement.py) before returning the card. It checks arithmetic against the bundled rubric; it cannot establish whether your gate judgments are true. Without a runner, show the addition and the minimum explicitly and label the arithmetic manually checked.
 4. **When need exceeds the ceiling, say so** and offer the honest moves: lower the need (decompose, fix the path into a recipe, seal stable expertise inside a Smart Tool) or raise the ceiling (add an evaluator, put irreversible calls behind approval, remove one leg of the trifecta, isolate it, set budgets, name an owner). Never grant the autonomy anyway.
 5. **Choose the shape.** Count H1 to H4. Zero or one: a single tool, skill or agent. Two or more: an outer harness behind an agent interface, or behind a function when the result is bounded and checkable. H4 alone: decompose first. Composition never raises the ceiling.
-6. **Name the engine.** LLM, decision model or both, as the rubric defines them. Prefer a measured rule to a model when the measurement ties. Do not add a decision model to work whose value is human judgment.
+6. **Name the engine.** LLM, decision model, both, or None for deterministic execution, as the rubric defines them. Prefer a measured rule to a model when the measurement ties. Do not add a decision model to work whose value is human judgment.
 7. **Check replaceability.** Run R1 to R5. Report only the gaps.
 8. **Write the benchmark** on the evaluation ladder: fixtures, at least one planted trap, one case it should leave alone, a stopping test, a consistency test, a control and proposed thresholds. A benchmark is a plan until a dated run exists.
 9. **Hand over the placement card** from the rubric and stop.
@@ -51,7 +51,7 @@ Follow the conditional Audit workflow and the rubric's audit records. A reposito
 3. Place each proposed capability; name its method owner, engine, public entry and independent install route. Keep usefulness evidence separate from architecture.
 4. Route exact existing paths to explicit owners and interfaces. Distinguish extraction, shared contracts, retained engines and compatibility aliases from physical mergers.
 5. Reconcile every source and embedded method to a destination or retained source bucket. Keep observed facts, proposed actions, owner decisions and applied changes separate.
-6. Deliver one source-bound report and staged plan with gates and rollback. Stop at the authorized scope; an audit recommendation is not permission to publish, hide, archive, delete or detach.
+6. Deliver one source-bound report and staged plan with gates and rollback. For a large kept/shared Audit, include the rubric's machine record and check it with [scripts/validate_audit.py](scripts/validate_audit.py) against the retained source inventory where a runner is available. This checks structure, not semantic correctness. Stop at the authorized scope; an audit recommendation is not permission to publish, hide, archive, delete or detach.
 
 ## Check
 

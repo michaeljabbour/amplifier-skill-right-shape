@@ -1,7 +1,7 @@
 ---
 bundle:
   name: right-shape
-  version: 0.2.0
+  version: 0.2.1
   description: >-
     Decides what shape a piece of AI work should take, how much autonomy it can
     safely have, which engine it needs, and how to benchmark it: the right-shape

@@ -29,7 +29,7 @@
   <section class="hero fit-hero" aria-labelledby="hero-title">
     <div class="hero-grid">
       <div><p class="eyebrow">A bounded placement skill</p><h1 id="hero-title">Right<br>Shape</h1><p class="promise">Give the work its right shape.<br>Then prove it.</p></div>
-      <div class="hero-intro"><p class="lede">Most AI work gets built one size too big. An agent where a tool would do, a swarm where a recipe would, and no way to tell whether any of it helps.</p><p>This skill places a job on an autonomy ladder, caps it with six safety gates, picks its shape and engine, and writes a benchmark that can fail. It also audits a pile of repositories into capabilities that install in three commands and can be measured.</p><div class="actions"><a class="button primary" href="#explore">See a placement</a><a class="text-link" href="#try">Try the rubric</a><a class="text-link" href="#use-skill">Get the skill</a></div><p class="note hero-note">Examples are fictional. The benchmark hasn't run yet. <a href="#bar">See the bar it has to clear.</a></p></div>
+      <div class="hero-intro"><p class="lede">Most AI work gets built one size too big. An agent where a tool would do, a swarm where a recipe would, and no way to tell whether any of it helps.</p><p>This skill places a job on an autonomy ladder, caps it with six safety gates, picks its shape and engine, and writes a benchmark that can fail. It also audits a pile of repositories into capabilities that install in three commands and can be measured.</p><div class="actions"><a class="button primary" href="#explore">See a placement</a><a class="text-link" href="#try">Try the rubric</a><a class="text-link" href="#use-skill">Get the skill</a></div><p class="note hero-note">Examples are fictional. The full controlled benchmark has not yet run. One development Audit application failed; <a href="./docs/VALIDATION.md">read the validation record</a>. <a href="#bar">See the bar it has to clear.</a></p></div>
     </div>
   </section>
 
@@ -62,7 +62,7 @@
       <li><h3>Sort it.</h3><p>Four questions before any name is used.</p><ol class="question-list compact">@@QUESTIONS@@</ol></li>
       <li><h3>Score the need.</h3><p>Score the smallest version of the job that would genuinely help, not the most ambitious one.</p><p class="pass-meta"><span>Then</span>Map the score to a rung and apply the tiebreakers inside the band.</p></li>
       <li><h3>Set the ceiling.</h3><p>Six gates. The lowest failed cap wins.</p><p class="pass-meta"><span>Then</span>Say plainly when need exceeds it, and offer the honest moves.</p></li>
-      <li><h3>Choose the shape and engine.</h3><p>Two or more composition checks make it an outer harness behind one face. The engine is LLM, decision model, or both.</p><p class="pass-meta"><span>Rule</span>Composition never raises the ceiling.</p></li>
+      <li><h3>Choose the shape and engine.</h3><p>Two or more composition checks make it an outer harness behind one face. The engine is LLM, decision model, both, or no model.</p><p class="pass-meta"><span>Rule</span>Composition never raises the ceiling.</p></li>
       <li><h3>Check replaceability, then write the benchmark.</h3><p>Five checks, then a benchmark with a planted trap, a case to leave alone, a stopping test, a consistency test and a control.</p><p class="pass-meta"><span>Rule</span>A benchmark is a plan until a dated run exists.</p></li>
     </ol>
   </section>
@@ -82,7 +82,7 @@
   </section>
 
   <section id="engines" class="section two-col" aria-labelledby="engines-title">
-    <div><p class="eyebrow">LLM, decision model, or both</p><h2 id="engines-title">Name the<br>engine.</h2><p class="section-intro">A decision model is a fast, narrow judge: route, score, select, gate. When a measured rule ties it, ship the rule. When human judgment is the product, leave the decision model out.</p></div>
+    <div><p class="eyebrow">LLM, decision model, both, or no model</p><h2 id="engines-title">Name the<br>engine.</h2><p class="section-intro">A decision model is a fast, narrow judge: route, score, select, gate. When a measured rule ties it, ship the rule. When human judgment is the product, leave the decision model out.</p></div>
     <div class="axis-definitions engine-cards">@@ENGINES@@</div>
   </section>
 
@@ -114,9 +114,9 @@
   </section>
 
   <section id="bar" class="section" aria-labelledby="bar-title">
-    <div class="section-heading"><div><p class="eyebrow">Not yet run · thresholds are proposals</p><h2 id="bar-title">The bar it<br>has to clear.</h2></div><p>Twelve fictional jobs and six fictional portfolios with planted traps, three conditions (skill, baseline and placebo), and two judges from a different model family scoring blind. The quiet test matters most: does it leave simple things simple?</p></div>
+    <div class="section-heading"><div><p class="eyebrow">Full controlled benchmark not yet run · thresholds are proposals</p><h2 id="bar-title">The bar it<br>has to clear.</h2></div><p>Twelve fictional jobs and six fictional portfolios with planted traps, three conditions (skill, baseline and placebo), and two judges from a different model family scoring blind. The quiet test matters most: does it leave simple things simple?</p></div>
     <div class="table-scroll"><table class="evidence-table bar-table"><thead><tr><th scope="col">Test</th><th scope="col">Passes if</th><th scope="col">Guards against</th></tr></thead><tbody>@@BENCHMARK@@</tbody></table></div>
-    <p class="note anchor-note">Passing would show the skill behaves as designed in these exercises, not that capabilities shaped with it are more useful in the field. <a href="./docs/BENCHMARK.md">Read the full plan.</a></p>
+    <p class="note anchor-note">One separate development Audit application failed substantive checks and is retained in the validation record. A future controlled pass would show behavior in exercises, not that capabilities shaped with it are more useful in the field. <a href="./docs/BENCHMARK.md">Read the full plan.</a></p>
   </section>
 
   <section id="use-skill" class="section use-section" aria-labelledby="use-title"><div class="section-heading"><div><p class="eyebrow">Bring it to your agent</p><h2 id="use-title">A small skill.<br>The right size.</h2></div><p>Use the instructions in a host that supports skills, or give them to your assistant with the job or the repositories. Expect a card or a report back, even when the answer is "smaller than you thought."</p></div>

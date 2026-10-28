@@ -10,7 +10,7 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL_DIR = ROOT / 'skills/right-shape'
-SKILL_FILES = ('SKILL.md', 'references/rubric.md', 'references/audit.md', 'scripts/validate_placement.py', 'LICENSE')
+SKILL_FILES = ('SKILL.md', 'references/rubric.md', 'references/audit.md', 'scripts/validate_placement.py', 'scripts/validate_audit.py', 'LICENSE')
 ARCHIVE_DATE = (2026, 10, 28, 0, 0, 0)
 
 
@@ -155,6 +155,7 @@ def build(output):
             shutil.copy2(SKILL_DIR / name, target)
     documentation = ['README.md', 'LICENSE', 'CHANGELOG.md', 'site/README.md', 'site/theme/LICENSE']
     documentation.extend(str(path.relative_to(ROOT)) for path in sorted((ROOT / 'docs').rglob('*')) if path.is_file())
+    documentation.extend(str(path.relative_to(ROOT)) for path in sorted((ROOT / 'evals').rglob('*')) if path.is_file())
     for name in documentation:
         target = output / name
         target.parent.mkdir(parents=True, exist_ok=True)

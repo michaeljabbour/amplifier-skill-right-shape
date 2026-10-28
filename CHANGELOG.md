@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 (2026-10-28)
+
+- Retain the failed fictional Audit forward application and balanced semantic assessment; no reroll or benchmark-pass claim.
+- Add a structural Audit machine record/validator for independent census, exact paths, canonical dispositions, interfaces, embedded methods and numeric placements. Structural validity does not establish sound consolidation.
+- Add engine None for deterministic tools, and distinguish intentionally separate private/local foundations from public-source coverage.
+
 ## 0.2.0 (2026-10-28)
 
 - Expand Audit from repository dispositions into source-depth, distinct promises, embedded methods, exact component ownership and versioned interfaces. Keep product evidence separate from retained experiment and learning value.

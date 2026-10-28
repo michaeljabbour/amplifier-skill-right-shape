@@ -2,11 +2,11 @@
 
 [Open the guide and get the skill](https://michaeljabbour.github.io/amplifier-skill-right-shape/).
 
-A placement and audit skill for AI work. It decides what shape a job should take (a tool, a Smart Tool, a skill, an agent or a harness), how much autonomy it can safely have, which engine it needs (an LLM, a decision model, or both), and how anyone would know it works. It can also audit a set of repositories into capabilities that are self-contained, easy to install and measurable. It does not build the capability, and it never grants more autonomy than the gates allow.
+A placement and audit skill for AI work. It decides what shape a job should take (a tool, a Smart Tool, a skill, an agent or a harness), how much autonomy it can safely have, which engine it needs (an LLM, a decision model, both, or no model), and how anyone would know it works. It can also audit a set of repositories into capabilities that are self-contained, easy to install and measurable. It does not build the capability, and it never grants more autonomy than the gates allow.
 
 **Need** is how much agency the job wants: how open its path is, how much context it carries, how long it runs unattended, and whether it acts on its own. **The ceiling** is how much agency can safely be granted, set by six gates: verifiability, reversibility, the lethal trifecta, isolation, budget and ownership. The placement is whichever is lower. Composition is a separate question: one worker, or a system of workers behind one face.
 
-This project pairs the [`right-shape` skill](skills/right-shape/SKILL.md) and its [rubric](skills/right-shape/references/rubric.md) with an explanatory static website that includes a placement calculator. The [benchmark plan](docs/BENCHMARK.md) sets the bar the skill has to clear; it has not been run yet.
+This project pairs the [`right-shape` skill](skills/right-shape/SKILL.md) and its [rubric](skills/right-shape/references/rubric.md) with an explanatory static website that includes a placement calculator. The [full controlled benchmark plan](docs/BENCHMARK.md) has not been run. A separate fictional Audit application failed substantive checks; [local validation](docs/VALIDATION.md) records it alongside passing arithmetic conformance.
 
 ## Use the skill
 
@@ -29,6 +29,14 @@ python3 skills/right-shape/scripts/validate_placement.py --input placement.json
 ```
 
 The input uses `need` (four integers), `failed` (gate IDs), `checks` (shape-check IDs), `engine`, and optional `rung`, `need_score`, `need_rung`, `ceiling`, `tiebreak` and `honest_move`. A false ceiling or a placement above it exits with an error. This checks arithmetic and recognized labels; it cannot establish that the gate judgments or utility claims are true.
+
+For a kept/shared portfolio, write the rubric’s `right-shape-audit/v1` companion record and check its structural coverage against the retained inventory:
+
+```sh
+python3 skills/right-shape/scripts/validate_audit.py audit.json --inventory census.json
+```
+
+The inventory can use `sources` with ID, revision, paths and embedded-method paths, or fixture-style `repositories` with ID, revision and a files map. This catches omissions and invalid paths/interfaces/placements; it cannot certify a proposed merger, license determination or user claim.
 
 ## In Amplifier
 
@@ -61,7 +69,7 @@ See [worked examples](docs/EXAMPLES.md): three placements and one audit, all fic
 1. **Sort.** Where does the expertise live, who starts it, how much of the loop a person holds, and whether it is one worker or many.
 2. **Score the need.** Four dimensions from 0 to 3 map to a rung on a ten-rung ladder, from a single call to a swarm.
 3. **Set the ceiling.** Six gates. Each failure caps the rung. The placement is the lower of need and ceiling, and the skill says what would raise the ceiling honestly.
-4. **Choose the shape and engine.** Four composition checks decide between a single worker and an outer harness behind an agent interface. The engine is LLM, decision model, or both.
+4. **Choose the shape and engine.** Four composition checks decide between a single worker and an outer harness behind an agent interface. The engine is LLM, decision model, both, or None for deterministic execution.
 5. **Check replaceability.** Five checks, from a stable contract to a sunset test that shows when scaffolding has become dead weight.
 6. **Write a benchmark that can fail.** A planted trap, a case to leave alone, a stopping test, a consistency test and a control.
 

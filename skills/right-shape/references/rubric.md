@@ -78,6 +78,7 @@ When a pass condition is unknown, say what evidence is missing and apply that ga
 | LLM | Generative reasoning or writing is the product | Blinded judges, comparing against a baseline and a placebo |
 | Decision model | A fast, narrow judgment (route, score, select, gate) made by a specialised model, or by a measured rule when the rule ties it | Agreement with labels, calibration, test-retest stability and regret |
 | Both | A decision model decides and an LLM produces | Each part on its own terms, then end to end |
+| None | Deterministic execution; no model is required | Contract/output checks, failure cases and fresh install; use comparisons only for an incremental-value claim |
 
 ## Replaceability
 
@@ -169,7 +170,7 @@ QUESTION  <one, only if the answer would change the verdict>
 ### Audit report
 
 1. At a glance: immutable source-census date/count, current-state changes separately, counts by primary disposition, distinct promises versus supporting assets, and the highest-leverage move. Counts describe reviewed records, not validated products.
-2. Collection and depth: each listing/source and revision, exclusions, inaccessible items, shallow versus body-reviewed items, and contradictions. API listings, local checkouts, search, dependency links and supplied analysis have different coverage. No exhaustive claim beyond shown evidence.
+2. Collection and depth: each listing/source and revision, exclusions, inaccessible items, shallow versus body-reviewed items, and contradictions. API listings, local checkouts, search, dependency links and supplied analysis have different coverage. Discover documented private/local foundations within actual authorization and keep their supplemental scope distinct from the public census; missing access is not absence of value. No exhaustive claim beyond shown evidence.
 3. Each promise: stable ID, plain name, public entry or internal procedure, assumed/confirmed audience, trigger, current pain/cost or unknown, one-sentence offer, before/after, source design, target shape/engine/owner, differentiation hypothesis, risky assumption, next validation, confidence. Similar mechanism does not prove the same job; a bundle is distribution, not a promise.
 4. Each research/evaluation claim: exact source/revision, authorship/upstream/license, method or theory, actual dated run if any, raw record, baseline/control, limits and next gate. Separate cited research, source-authored tests, AI exercises, outside-user outcomes and return. Keep negative, invalid and tied results visible.
 5. Each product-usefulness assessment, when requested: Job, First value, Fit, Outcome, Trust and Return as separate judgments with evidence and a specific first-value blocker/removal and return-validation opportunity. Use the available usefulness rubric for its scales; otherwise report observations and unknowns without inventing ratings or zones. Source, builder and AI runs do not establish outside use. No average, total or promotion into a readiness zone. For internal mechanisms, experiments, research and learning assets, record asset value, audience, retained artifact and validation question instead of a failed-product grade.
@@ -177,6 +178,22 @@ QUESTION  <one, only if the answer would change the verdict>
 7. Full coverage: every source repository gets one primary disposition and source bucket, with as many component routes as its distinct parts need. Reconcile embedded skill bodies, host aliases, test fixtures, upstream copies, outputs and retained research; explain every unmapped remainder. Byte-identical copies and semantic variants are different counts.
 8. Owner ledger: verified fork/visibility facts with timestamp/basis; uncertain local divergence or consumers; existing authorization and explicit naming/visibility decisions; proposals separately from applied actions and verification. No hidden/private inference from a broken link alone. An owner may retain a public fork or useful experiment without a product-readiness argument.
 9. Staged implementation: exact source-to-target change, dependency order, independent install/no-key host path where applicable, compatibility/redirect plan, acceptance evidence, rollback and unresolved decisions. Name public display name, package/repository/command aliases separately; preserve working names unless a concrete mismatch justifies a change. Retire a predecessor only after the replacement works, supported consumers/data migrate and recovery/provenance are retained. Technical value and public visibility remain separate decisions.
+
+### Audit machine record
+
+For a large kept/shared Audit, write this structural companion beside the readable report. Fill existing paths from an independently retained source inventory. The optional validator checks coverage, recognized dispositions, numeric placements and explicit interfaces; it does not prove that a relocation, promise, license or gate judgment is sound. `kind` is `public`, `internal` or `asset`; only `public` requires a placement. Retained experiments can remain discoverable without becoming public AI capabilities.
+
+```json
+{
+  "schema_version": "right-shape-audit/v1",
+  "sources": [{"id": "<source>", "revision": "<revision>", "scope": "<public or supplemental>", "primary_disposition": "<rubric disposition>", "bucket": "<retained owner/home>"}],
+  "capabilities": [{"id": "<promise or asset>", "kind": "<public, internal or asset>", "promise": "<plain user promise or asset value>", "shape": "<shape>", "placement": null}],
+  "routes": [{"capability_id": "<id>", "source_id": "<source>", "source_revision": "<revision>", "source_paths": ["<existing path>"], "target_repo": "<owner>", "target_path": "<path>", "target_status": "<existing or proposed>", "action": "<rubric disposition>", "role": "<method, tool, harness, adapter, eval, reference or research>", "interface": "<inputs, outputs, failures and version>", "reason": "<evidence-bound reason>"}],
+  "method_routes": [{"source_id": "<source>", "path": "<embedded method path>", "destination": "<explicit owner/bucket>", "provenance": "<original, upstream, host variant, fixture or unknown with basis>"}]
+}
+```
+
+A public placement uses the validator's `need`, `failed`, `checks`, `engine` and optional claimed numeric fields, with reasons in the readable report. An internal/asset record uses `placement: null` when no AI placement is relevant. A source bucket preserves any unextracted remainder. An exact-path route does not establish that its proposed target is desirable; the owner/evidence review remains necessary.
 
 ### Check report
 
