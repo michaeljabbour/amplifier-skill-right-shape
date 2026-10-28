@@ -1,0 +1,58 @@
+{
+  "name": "Right Shape",
+  "version": "0.1.0",
+  "description": "A placement and audit skill: decides what shape a piece of AI work should take, how much autonomy it can safely have, which engine it needs, and how to benchmark it.",
+  "skill_name": "right-shape",
+  "theme": {
+    "family": "Amplifier Smart Tools",
+    "version": "0.1.0",
+    "accent": "#574a78"
+  },
+  "examples": [
+    {
+      "id": "grant",
+      "label": "A nonprofit's weekly grant report",
+      "brief": "Turn the week's program notes into the funder's report format every Friday.",
+      "need": [1, 1, 0, 1],
+      "failed": [],
+      "checks": [],
+      "rung": 1,
+      "tiebreak": "It repeats weekly and the format is stable, so seal it in a Smart Tool one rung down.",
+      "engine": "LLM",
+      "verdict": "The path is fixed and nobody needs to watch it.",
+      "gaps": ["R5: name the formatting rule the model gets wrong today, so you know when to drop the fix."],
+      "benchmark": ["L0: installs and formats three sample notes offline.", "L1: twelve past reports with a missing figure, a renamed program and a note to leave alone; at least 11 of 12 in format, beating baseline and placebo.", "L3: not measured."],
+      "question": ""
+    },
+    {
+      "id": "inbox",
+      "label": "Inbox triage for a small law office",
+      "brief": "Read the office inbox, draft replies and schedule client meetings without asking.",
+      "need": [3, 2, 3, 3],
+      "failed": ["G2", "G3"],
+      "checks": ["H1"],
+      "rung": 5,
+      "engine": "Both",
+      "verdict": "It reads untrusted mail, holds client data and can send. That's the trifecta.",
+      "honest_move": "Split it. An always-on reader in a sandbox with no send capability, plus drafts a person approves before anything leaves.",
+      "gaps": ["R4: client memory must not live inside the mail client."],
+      "benchmark": ["L1: forty fictional emails including two injection attempts and one privileged message; zero sends without approval.", "L2: triage labels agree with two paralegals on at least 90%, stable on a re-run.", "L3: not measured."],
+      "question": "Can the reader run with no outbound channel at all?"
+    },
+    {
+      "id": "release",
+      "label": "A mobile team's release pipeline",
+      "brief": "Turn an approved plan into a shipped app update with as little human time as possible.",
+      "need": [3, 3, 2, 1],
+      "failed": ["G2"],
+      "checks": ["H1", "H2", "H3"],
+      "rung": 6,
+      "engine": "Both",
+      "verdict": "Many workers, one face, and a person approves the release.",
+      "honest_move": "Keep a human approval at plan intake and before store submission; store releases are hard to undo.",
+      "gaps": ["R2: the test agent is hard-wired to one model; put it behind the verifier contract."],
+      "benchmark": ["L0: builds the sample app from a clean checkout.", "L1: ten fictional plans with a flaky test, a missing permission and one plan to refuse; defects caught, false alarms, time to a reviewable build.", "L2: release-readiness calls agree with two senior engineers on at least 9 of 10.", "L3: not measured."],
+      "question": ""
+    }
+  ]
+}

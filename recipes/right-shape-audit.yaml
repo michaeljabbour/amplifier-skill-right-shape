@@ -1,0 +1,135 @@
+# One bounded Right Shape audit, following @right-shape:skills/right-shape/SKILL.md.
+# The recipe only sequences the skill and puts the human at each decision. The
+# method itself lives in the skill and its rubric.
+#
+# Usage:
+#   recipes(operation="execute", recipe_path="@right-shape:recipes/right-shape-audit.yaml",
+#           context={"scope": "the repositories listed in repos.txt",
+#                    "house_style": "our newest skill repository"})
+#   # Pauses after "inventory". Correct the list and answer the questions:
+#   recipes(operation="approve", session_id="<id>", stage_name="inventory",
+#           message="Add the lab's data-loader repo. The two forks carry no changes ...")
+#   recipes(operation="resume", session_id="<id>")
+#   # Pauses after "place". Accept or change each disposition, with a reason:
+#   recipes(operation="approve", session_id="<id>", stage_name="place",
+#           message="Keep the two memory repos separate because ...")
+#   recipes(operation="resume", session_id="<id>")
+#   # Deny at either gate to stop. A denied run writes no report.
+#
+# Nothing in scope is edited. The report is written under work_dir.
+#
+# Why this recipe is legacy (no schema_version: 2): every step runs as
+# `agent: self`, the calling session's own agent. That session has the
+# right-shape bundle loaded, so the @right-shape: skill paths resolve and the
+# step can read files. A v2 closure refuses `self` and would also have to carry
+# this bundle itself so those mentions resolve.
+
+name: right-shape-audit
+description: "One bounded Right Shape audit: an inventory, placements and dispositions the owner approves, then an audit report."
+version: "1.0.0"
+
+context:
+  scope:
+    type: string
+    required: true
+    description: "What to audit: paths, a list file, or an organization's public repositories (never modified)"
+  house_style:
+    type: string
+    default: ""
+    description: "An existing capability whose layout the target design should follow (optional)"
+  work_dir:
+    type: string
+    default: ".right-shape"
+  # The executor injects this at approval time. Declaring it here lets the
+  # static validator accept {{_approval_message}}.
+  _approval_message: ""
+
+stages:
+  - name: inventory
+    steps:
+      - id: list-and-classify
+        agent: self
+        prompt: |
+          First read_file @right-shape:skills/right-shape/SKILL.md and
+          @right-shape:skills/right-shape/references/rubric.md. Follow them.
+          This prompt frames only the inventory.
+
+          Inputs:
+          - Scope: {{scope}}
+          - House style to follow (may be empty): {{house_style}}
+
+          You cannot talk to the user during this step. Do not answer your own
+          questions. Edit nothing. Return, verdict first:
+
+          1. How the inventory was gathered, and what could not be seen.
+          2. A table: item, current shape, one-line promise, blockers
+             (private dependencies, secrets outside environment variables,
+             size, duplicate promise, two promises, stale links).
+          3. Anything whose fork status, privacy or ownership you inferred,
+             labeled INFERRED with the basis.
+          4. Up to five numbered questions whose answers would change a disposition.
+        output: inventory
+    approval:
+      required: true
+      prompt: |
+        {{inventory}}
+
+        ---
+        Approve with a message that corrects the inventory and answers the
+        numbered questions in your own words. Deny to stop. Nothing has been written.
+
+  - name: place
+    steps:
+      - id: group-and-place
+        agent: self
+        prompt: |
+          First read_file @right-shape:skills/right-shape/SKILL.md and
+          @right-shape:skills/right-shape/references/rubric.md. Follow them.
+
+          Inputs:
+          - Inventory: {{inventory}}
+          - The owner's corrections and answers, verbatim. They override your
+            inferences: {{_approval_message}}
+
+          Group items by promise. For each proposed capability give: name, kind,
+          engine, rung and shape with the need scores and any failed gates, the
+          source items, and a one-line target design. Then give every item exactly
+          one disposition. Name the single highest-leverage move and any shared
+          machinery worth extracting. Never invent results or usage.
+          Verdict first. Keep each capability under ninety words.
+        output: placements
+        timeout: 1200
+    approval:
+      required: true
+      prompt: |
+        {{placements}}
+
+        ---
+        Approve with a message that accepts or changes each disposition and gives
+        your reason. Deny to stop without writing a report.
+
+  - name: report
+    steps:
+      - id: write-report
+        agent: self
+        prompt: |
+          First read_file @right-shape:skills/right-shape/SKILL.md and
+          @right-shape:skills/right-shape/references/rubric.md. Follow them.
+
+          Inputs:
+          - Inventory: {{inventory}}
+          - Placements offered: {{placements}}
+          - The owner's decisions and reasons, verbatim: {{_approval_message}}
+          - Work dir: {{work_dir}}
+
+          1. Apply the owner's decisions. Where they gave no reason, record the
+             reason as missing; never fill it in.
+          2. Write {{work_dir}}/audit-report.md using the rubric's audit outline:
+             at a glance, how it was gathered, the contract, each capability
+             (source links, source design, target design, engine, benchmark,
+             reasoning, questions), the full inventory, open questions, sequence.
+          3. Leave out personal information, credentials and internal product names.
+          4. Read the file back to confirm it exists. Edit nothing else.
+          5. Return the at-a-glance section and the open questions.
+        output: final_output
+        timeout: 1200
