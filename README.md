@@ -1,10 +1,38 @@
 # Right Shape
 
-[Open the guide and get the skill](https://michaeljabbour.github.io/amplifier-skill-right-shape/).
+[Open the guide and get the skill](https://michaeljabbour.github.io/amplifier-skill-right-shape/). [Watch the 86-second film](https://michaeljabbour.github.io/amplifier-skill-right-shape/#film) (captioned, with a transcript and a 15-second cut).
 
-A placement and audit skill for AI work. It decides what shape a job should take (a tool, a Smart Tool, a skill, an agent or a harness), how much autonomy it can safely have, which engine it needs (an LLM, a decision model, both, or no model), and how anyone would know it works. It can also audit a set of repositories into capabilities that are self-contained, easy to install and measurable. It does not build the capability, and it never grants more autonomy than the gates allow.
+**What it is for.** You have a job you want AI to help with. Before anyone builds anything, Right Shape answers three questions: what form should it take, how much should it do on its own, and what kind of AI, if any, does it need. It explains each answer in plain words and gives you a test that shows whether the result works. Most of the time the right answer is smaller than you expected.
 
-**Need** is how much agency the job wants: how open its path is, how much context it carries, how long it runs unattended, and whether it acts on its own. **The ceiling** is how much agency can safely be granted, set by six gates: verifiability, reversibility, the lethal trifecta, isolation, budget and ownership. The placement is whichever is lower. Composition is a separate question: one worker, or a system of workers behind one face.
+It works on one job ("should our support inbox get an agent?") or on a whole set of code repositories you want to tidy into installable, measurable pieces. It recommends; it does not build. It never gives an AI more freedom than its safety checks allow.
+
+## The three choices
+
+People often mix these up. "Let's build an agent" quietly answers all three at once. Right Shape answers each one separately, so you can see which choice is driving the result.
+
+| Choice | The question | The options |
+| --- | --- | --- |
+| **Shape** | What form should it take? | Tool, Smart Tool, Skill, Agent, or a Team (outer harness) |
+| **Freedom** | How much should it do on its own? | From "you ask, it answers" (rungs 0 to 2) through "it follows a set route" (3) and "it works alongside you" (4 to 5) to "it works without you" (6 to 9) |
+| **Engine** | What kind of AI, if any, does it need? | A writer (an LLM), a referee (a decision model that makes one narrow call fast and consistently), both, or no model for fixed code |
+
+### The five shapes, side by side
+
+Listed from the least independent to the most. Pick the first one that does the job.
+
+| Shape | In plain words | Like | Pick it when | Who is in charge |
+| --- | --- | --- | --- | --- |
+| **Tool** | Does one fixed thing when asked. No judgment of its own. | A calculator | The steps never change and a wrong answer is easy to spot | You, every time |
+| **Smart Tool** | A specialist you hand a request to. The expertise stays inside; you get a finished result back. | A tax-prep service | The job repeats and the know-how is stable | You, at the hand-off |
+| **Skill** | Know-how written down for your assistant to read and apply with its own judgment. | A playbook or recipe card | Your assistant needs your team's way of doing something, but situations vary | You, alongside it |
+| **Agent** | A worker you delegate to. It plans its own steps, keeps going without you, and remembers. | A colleague you hand a task to | The steps can't be written in advance, and the result can be checked | You approve the result |
+| **Team (outer harness)** | Several workers and checkers behind one point of contact. | A small team with a manager | The work needs a separate checker, several specialists, or many groups will use it | You approve at set checkpoints |
+
+Plugins and bundles are not on the list on purpose: they are the box a capability ships in, not a kind of capability.
+
+### How the freedom is decided
+
+**Need** is how much freedom the job wants: how open its path is, how much it has to keep in mind, how long it runs without anyone watching, and whether it acts on its own. **The ceiling** is how much freedom can safely be given, set by six safety checks: can the result be checked, can it be undone, is the "lethal trifecta" broken (private data plus untrusted content plus a way to send data out), is it isolated, is there a budget, and is someone accountable. The recommendation is whichever is lower.
 
 This project pairs the [`right-shape` skill](skills/right-shape/SKILL.md) and its [rubric](skills/right-shape/references/rubric.md) with an explanatory static website that includes a placement calculator. The [full controlled benchmark plan](docs/BENCHMARK.md) has not been run. A separate fictional Audit application failed substantive checks; [local validation](docs/VALIDATION.md) records it alongside passing arithmetic conformance.
 
@@ -104,12 +132,21 @@ The Pages workflow builds and checks `_site/` on pushes to `main`, then publishe
 - `docs/EXAMPLES.md`: fictional worked placements and a fictional audit.
 - `docs/BENCHMARK.md`: the tests the skill has to pass. Not yet run.
 - `scripts/build.py`, `scripts/check.py`: dependency-free build and integrity checks.
-- `site/`: page template, metadata, styles, local assets and interaction code.
+- `site/`: page template, metadata, styles, local assets (including the film, its captions, poster and 15-second cut) and interaction code.
 - `_site/`: generated website and downloadable skill assets.
 
 ## Background
 
 The method draws on public work: Anthropic's *Building effective agents* (workflows versus agents), Feng, McDonald and Zhang's *Levels of Autonomy for AI Agents* (autonomy as a design decision separate from capability), Simon Willison's *lethal trifecta*, Anthropic's *Scaling Managed Agents* (stable interfaces, and scaffolding that becomes dead weight), and Rich Sutton's *The Bitter Lesson*.
+
+## A few terms
+
+- **Rung:** one step on the ten-step ladder of how much an AI does on its own.
+- **Gate:** a safety check that lowers the ceiling when it fails.
+- **Harness:** the code that runs an AI. An outer harness organizes many workers into a team.
+- **Smart Tool:** a tool that carries its own expertise and works without a model wherever it can.
+- **Decision model:** a small, fast model, or a measured rule, that makes one narrow decision consistently.
+- **Benchmark:** a test set up in advance, with traps to catch and cases to leave alone.
 
 ## Limits
 

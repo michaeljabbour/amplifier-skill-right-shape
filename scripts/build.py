@@ -24,7 +24,7 @@ sys.path.insert(0, str(SKILL_DIR / 'scripts'))
 from validate_placement import section, table_rows, bullets, read_rubric, need_rung, place
 
 
-def ladder_svg(example, r, score, wanted, ceiling):
+def ladder_svg(example, r, score, wanted, ceiling):  # noqa: C901
     rung = example['rung']
     width, cell, top = 640, 64, 30
     parts = []
@@ -42,7 +42,7 @@ def ladder_svg(example, r, score, wanted, ceiling):
     x = rung * cell + cell / 2
     parts.append(f'<text class="rung-note pick" x="{x}" y="{top + 88 if wanted != rung else top + 72}" text-anchor="middle">placed {rung}</text>')
     summary = f'Need score {score} wants rung {wanted}; ceiling {ceiling}; placed at rung {rung}, {r["ladder"][rung][1]}.'
-    return (f'<div class="trace-scroll"><svg class="ladder-svg" viewBox="0 0 {width} 130" role="img" aria-labelledby="l-{example["id"]}">'
+    return (f'<div class="trace-scroll" tabindex="0" role="region" aria-label="Ladder for {escape(example["label"])}"><svg class="ladder-svg" viewBox="0 0 {width} 130" role="img" aria-labelledby="l-{example["id"]}">'
             f'<title id="l-{example["id"]}">{escape(summary)} Fictional example.</title>' + ''.join(parts) + '</svg></div>')
 
 
@@ -108,6 +108,10 @@ def build(output):
     if len(examples) < 2 or len({e['id'] for e in examples}) != len(examples):
         raise ValueError('At least two distinct fictional examples are required')
     panels = [panel(e, r, i == 0) for i, e in enumerate(examples)]
+    choices = config['choices']
+    shape_names = {row[0] for row in r['shapes']}
+    if {c['name'] for c in choices['shapes']} != shape_names - {'Package'}:
+        raise ValueError('site.json choices must explain every rubric shape except Package')
     replacements = {
         'NAME': escape(config['name']),
         'DESCRIPTION': escape(config['description']),
@@ -128,6 +132,15 @@ def build(output):
         'DIAGNOSIS': ''.join(f'<tr><td>{escape(a)}</td><td>{escape(b)}</td><td class="return-to">{escape(c)}</td></tr>' for a, b, c in r['diagnosis']),
         'BENCHMARK': ''.join(f'<tr><th scope="row">{escape(a)}</th><td>{escape(b)}</td><td>{escape(c)}</td></tr>' for a, b, c in r['tests']),
         'CALCULATOR': calculator(r),
+        'CHOICE_SHAPES': ''.join(
+            f'<li class="choice-card"><h3>{escape(c["label"])}</h3><p class="choice-plain">{escape(c["plain"])}</p><dl>'
+            f'<dt>Like</dt><dd>{escape(c["like"])}</dd><dt>Pick it when</dt><dd>{escape(c["when"])}</dd>'
+            f'<dt>Example</dt><dd>{escape(c["example"])}</dd><dt>Who is in charge</dt><dd>{escape(c["control"])}</dd></dl></li>'
+            for c in choices['shapes']),
+        'CHOICE_FREEDOM': ''.join(f'<li><b>{escape(f["name"])}</b><span class="rung-role">{"Rungs" if " to " in f["rungs"] else "Rung"} {escape(f["rungs"])}</span><span>{escape(f["plain"])}</span></li>' for f in choices['freedom']),
+        'CHOICE_ENGINES': ''.join(f'<li><b>{escape(name)}</b><span>{escape(means)}</span></li>' for name, means, _benchmark in r['engines']),
+        'CHOICE_SHAPE_LIST': ''.join(f'<li><b>{escape(c["label"])}</b><span>{escape(c["like"])}</span></li>' for c in choices['shapes']),
+        'GLOSSARY': ''.join(f'<dt>{escape(t)}</dt><dd>{escape(d)}</dd>' for t, d in config['glossary']),
         'SKILL_SOURCE': escape(skill),
     }
     page = (site / 'template.html').read_text(encoding='utf-8')

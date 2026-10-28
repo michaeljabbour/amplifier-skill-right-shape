@@ -133,7 +133,10 @@ def check(output):
         assert bundle.testzip() is None
         for name in SKILL_FILES:
             assert bundle.read('right-shape/' + name) == (SKILL_DIR / name).read_bytes(), f'Bundle changed source: {name}'
-    assert len(page.downloads) == 2, 'Expected skill and bundle download links'
+    skill_downloads = [d for d in page.downloads if not d.startswith('./assets/')]
+    assert len(skill_downloads) == 2, 'Expected skill and bundle download links'
+    for name in ('right-shape-film.mp4', 'right-shape-film.webm', 'right-shape-film.vtt', 'right-shape-film-poster.jpg', 'right-shape-film-15s.mp4'):
+        assert (output / 'assets' / name).is_file(), f'Film asset missing: {name}'
     assert len(list(ROOT.rglob('SKILL.md'))) - len(list((ROOT / '_site').rglob('SKILL.md'))) == 1, 'Keep exactly one SKILL.md in the source tree'
     # Locally hosted assets are the only runtime dependencies.
     for name in ('assets/style.css', 'assets/family.css'):
