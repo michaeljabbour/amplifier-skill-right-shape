@@ -18,23 +18,47 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="attribution"><div class="wrap"><span>A placement and audit skill for AI work</span><span>Right size. Right autonomy. Proof on the record.</span></div></div>
-<header class="masthead">
+<header class="site-top"><div class="attribution"><div class="wrap"><span>A placement and audit skill for AI work</span><span>Right size. Right autonomy. Proof on the record.</span></div></div>
+<div class="masthead">
   <div class="wrap">
     <a class="brand" href="#main" aria-label="Right Shape home"><span class="brand-mark" aria-hidden="true"></span><span><b>Amplifier</b><small>Skills for thoughtful work</small></span></a>
-    <nav class="nav" aria-label="Main navigation"><a href="#explore">Explore</a><a href="#method">Method</a><a href="#try">Try it</a><a href="#contract">Contract</a><a href="#bar">The bar</a><a class="nav-use" href="#use-skill">Use the skill</a></nav>
+    <nav class="nav" aria-label="Main navigation"><a href="#choices">The choices</a><a href="#explore">Example</a><a href="#method">Method</a><a href="#try">Try it</a><a href="#contract">Contract</a><a href="#bar">The bar</a><a class="nav-use" href="#use-skill">Use the skill</a></nav>
   </div>
+</div>
 </header>
 <main id="main" class="wrap">
   <section class="hero fit-hero" aria-labelledby="hero-title">
     <div class="hero-grid">
-      <div><p class="eyebrow">A bounded placement skill</p><h1 id="hero-title">Right<br>Shape</h1><p class="promise">Give the work its right shape.<br>Then prove it.</p></div>
-      <div class="hero-intro"><p class="lede">Most AI work gets built one size too big. An agent where a tool would do, a swarm where a recipe would, and no way to tell whether any of it helps.</p><p>This skill places a job on an autonomy ladder, caps it with six safety gates, picks its shape and engine, and writes a benchmark that can fail. It also audits a pile of repositories into capabilities that install in three commands and can be measured.</p><div class="actions"><a class="button primary" href="#explore">See a placement</a><a class="text-link" href="#try">Try the rubric</a><a class="text-link" href="#use-skill">Get the skill</a></div><p class="note hero-note">Examples are fictional. The benchmark hasn't run yet. <a href="#bar">See the bar it has to clear.</a></p></div>
+      <div><p class="eyebrow">For anyone deciding how to use AI on a job</p><h1 id="hero-title">Right<br>Shape</h1><p class="promise">Give the work its right shape.<br>Then prove it.</p></div>
+      <div class="hero-intro"><p class="lede">You have a job you want AI to help with. Before anyone builds anything, Right Shape answers three questions: what form should it take, how much should it do on its own, and what kind of AI does it need.</p><p>It explains each answer in plain words and gives you a test that shows whether the result works. Most of the time the right answer is smaller than you expected, and that is the point.</p><div class="actions"><a class="button primary" href="#choices">See the three choices</a><a class="text-link" href="#explore">See an example</a><a class="text-link" href="#use-skill">Get the skill</a></div><p class="note hero-note">Examples are fictional. The benchmark hasn't run yet. <a href="#bar">See the bar it has to clear.</a></p></div>
     </div>
   </section>
 
+  <section class="section how-section" aria-labelledby="how-title">
+    <h2 id="how-title" class="visually-hidden">How it works</h2>
+    <ol class="how-steps">
+      <li><span class="how-num" aria-hidden="true">1</span><div><h3>Describe the job</h3><p>One sentence is enough. "An assistant that answers our support email" works. So does a list of code repositories you want to tidy up.</p></div></li>
+      <li><span class="how-num" aria-hidden="true">2</span><div><h3>Get a recommendation</h3><p>The form it should take, how much it should do on its own, what kind of AI it needs, and why. Safety checks can lower the answer, never raise it.</p></div></li>
+      <li><span class="how-num" aria-hidden="true">3</span><div><h3>Get a test</h3><p>Before anything is built: the traps it must catch, the cases it must leave alone, and the result that counts as working.</p></div></li>
+    </ol>
+  </section>
+
+  <section id="choices" class="section" aria-labelledby="choices-title">
+    <div class="section-heading"><div><p class="eyebrow">What the skill decides</p><h2 id="choices-title">Three choices,<br>kept separate.</h2></div><p>People often mix these up. "Let's build an agent" quietly answers all three at once. Right Shape answers each one on its own, so you can see which choice is driving the result.</p></div>
+    <div class="three-choices">
+      <article><p class="choice-q"><span>1</span>What form should it take?</p><p class="choice-sub">The shape</p><ul class="choice-list">@@CHOICE_SHAPE_LIST@@</ul></article>
+      <article><p class="choice-q"><span>2</span>How much should it do on its own?</p><p class="choice-sub">The freedom, from rung 0 to 9</p><ul class="choice-list">@@CHOICE_FREEDOM@@</ul></article>
+      <article><p class="choice-q"><span>3</span>What kind of AI does it need?</p><p class="choice-sub">The engine</p><ul class="choice-list">@@CHOICE_ENGINES@@</ul></article>
+    </div>
+    <h3 class="question-heading shapes-head">The five shapes, side by side</h3>
+    <p class="section-intro">Listed from the least independent to the most. Pick the first one that does the job.</p>
+    <ol class="choice-cards">@@CHOICE_SHAPES@@</ol>
+    <p class="note">Plugins and bundles are not on this list on purpose. They are the box a capability ships in, not a kind of capability.</p>
+    <details class="glossary"><summary>New to these terms? A short glossary</summary><dl>@@GLOSSARY@@</dl></details>
+  </section>
+
   <section id="explore" class="map-section" aria-labelledby="explore-heading">
-    <div class="map-heading"><h2 id="explore-heading">What the job wants. What it can safely have.</h2><p>Fictional placements, recomputed from the rubric at build time.</p></div>
+    <div class="map-heading"><h2 id="explore-heading">Three jobs, three different answers.</h2><p>Pick a job to see the full recommendation. All fictional, and recomputed from the rubric every time the site is built.</p></div>
     <div class="map-shell">
       <figure class="trace-figure" aria-labelledby="explore-heading" aria-describedby="ladder-note">
         <div class="map-topline"><span>The ladder, rung 0 to 9</span><span class="map-stamp" id="trace-stamp">@@FIRST_OUTCOME@@</span></div>
@@ -51,7 +75,7 @@
   </section>
 
   <section class="section two-col definitions" aria-labelledby="axes-title">
-    <div><p class="eyebrow">Two numbers, one placement</p><h2 id="axes-title">What it wants.<br>What it can have.</h2><p class="section-intro">Ambition sets the need. Safety sets the ceiling. The skill never lets the first overrule the second, and when they disagree it says what would honestly close the gap.</p><p class="note">Autonomy is a design decision, separate from how capable the model is. A strong model may, and often should, run low on the ladder.</p></div>
+    <div><p class="eyebrow">How the freedom is decided</p><h2 id="axes-title">What it wants.<br>What it can safely have.</h2><p class="section-intro">Ambition sets the need. Safety sets the ceiling. The skill never lets the first overrule the second, and when they disagree it says what would honestly close the gap.</p><p class="note">Autonomy is a design decision, separate from how capable the model is. A strong model may, and often should, run low on the ladder.</p></div>
     <div class="axis-definitions"><article><span class="axis-letter">N</span><div><h3>Need</h3><p>How open the path is, how much context it carries, how long it runs without anyone watching, and whether it acts on its own. Four scores from 0 to 3 map to a rung.</p></div></article><article><span class="axis-letter">C</span><div><h3>Ceiling</h3><p>Six gates: can the result be checked, can it be undone, is the lethal trifecta broken, is it isolated, is there a budget, is someone accountable. Each failure caps the rung.</p></div></article></div>
   </section>
 
@@ -77,8 +101,8 @@
     <div class="section-heading"><div><p class="eyebrow">Every number comes from the rubric</p><h2 id="try-title">Try the<br>rubric.</h2></div><p>Move the sliders and untick any gate that fails. The placement follows the same rules the skill uses. It is a thinking aid, not a verdict.</p></div>
     @@CALCULATOR@@
     <noscript><p class="note">The calculator needs JavaScript. The need scales and gates are in the tables below.</p></noscript>
-    <div class="table-scroll"><table class="evidence-table need-table"><thead><tr><th scope="col">Need</th><th scope="col">0</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th></tr></thead><tbody>@@NEED@@</tbody></table></div>
-    <div class="table-scroll"><table class="evidence-table"><thead><tr><th scope="col">Gate</th><th scope="col">Passes when</th><th scope="col">Fail caps at</th></tr></thead><tbody>@@GATES@@</tbody></table></div>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Need scales table"><table class="evidence-table need-table"><thead><tr><th scope="col">Need</th><th scope="col">0</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th></tr></thead><tbody>@@NEED@@</tbody></table></div>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Safety gates table"><table class="evidence-table"><thead><tr><th scope="col">Gate</th><th scope="col">Passes when</th><th scope="col">Fail caps at</th></tr></thead><tbody>@@GATES@@</tbody></table></div>
   </section>
 
   <section id="engines" class="section two-col" aria-labelledby="engines-title">
@@ -88,13 +112,13 @@
 
   <section id="contract" class="section" aria-labelledby="contract-title">
     <div class="section-heading"><div><p class="eyebrow">Self-contained, easy to install, measurable</p><h2 id="contract-title">The capability<br>contract.</h2></div><p>The shape an audit restructures toward. Skills fill the skill and host rows; Smart Tools add the library row. No private dependencies, three install commands at most, secrets only from environment variables.</p></div>
-    <pre class="contract-tree">@@CONTRACT@@</pre>
-    <div class="two-col shapes-grid"><div><h3 class="question-heading">Replaceability checks</h3><ul class="plain-list">@@REPLACE@@</ul></div><div><h3 class="question-heading">The evaluation ladder</h3><div class="table-scroll"><table class="evidence-table"><thead><tr><th scope="col">Level</th><th scope="col">Shows</th><th scope="col">When</th></tr></thead><tbody>@@EVALS@@</tbody></table></div></div></div>
+    <pre class="contract-tree" tabindex="0" aria-label="Capability contract file layout">@@CONTRACT@@</pre>
+    <div class="two-col shapes-grid"><div><h3 class="question-heading">Replaceability checks</h3><ul class="plain-list">@@REPLACE@@</ul></div><div><h3 class="question-heading">The evaluation ladder</h3><div class="table-scroll" tabindex="0" role="region" aria-label="Evaluation ladder table"><table class="evidence-table"><thead><tr><th scope="col">Level</th><th scope="col">Shows</th><th scope="col">When</th></tr></thead><tbody>@@EVALS@@</tbody></table></div></div></div>
   </section>
 
   <section id="audit" class="section two-col" aria-labelledby="audit-title">
     <div><p class="eyebrow">Group by promise, not by technology</p><h2 id="audit-title">What an audit<br>returns.</h2><p class="section-intro">An inventory that says how it was gathered, blockers named, every item given exactly one disposition, capabilities with source and target designs, and the owner's questions. Fork status, privacy and ownership are never reported as fact when they were inferred.</p><p class="note">See the <a href="./docs/EXAMPLES.md">fictional robotics lab audit</a>: fourteen repositories, five capabilities.</p></div>
-    <div class="table-scroll"><table class="evidence-table"><thead><tr><th scope="col">Disposition</th><th scope="col">Use when</th></tr></thead><tbody>@@DISPOSITIONS@@</tbody></table></div>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Dispositions table"><table class="evidence-table"><thead><tr><th scope="col">Disposition</th><th scope="col">Use when</th></tr></thead><tbody>@@DISPOSITIONS@@</tbody></table></div>
   </section>
 
   <section class="section two-col voice-section" aria-labelledby="voice-title">
@@ -110,12 +134,12 @@
 
   <section id="diagnosis" class="section" aria-labelledby="diagnosis-title">
     <div class="section-heading"><div><p class="eyebrow">Diagnose, don't rescore</p><h2 id="diagnosis-title">When a placement<br>looks wrong.</h2></div><p>Fix the one step the symptom points to. Rescoring everything hoping for a different answer is how rubrics turn into moods.</p></div>
-    <div class="table-scroll"><table class="evidence-table"><thead><tr><th scope="col">Symptom</th><th scope="col">Likely cause</th><th scope="col">Move</th></tr></thead><tbody>@@DIAGNOSIS@@</tbody></table></div>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Diagnosis table"><table class="evidence-table"><thead><tr><th scope="col">Symptom</th><th scope="col">Likely cause</th><th scope="col">Move</th></tr></thead><tbody>@@DIAGNOSIS@@</tbody></table></div>
   </section>
 
   <section id="bar" class="section" aria-labelledby="bar-title">
     <div class="section-heading"><div><p class="eyebrow">Not yet run · thresholds are proposals</p><h2 id="bar-title">The bar it<br>has to clear.</h2></div><p>Twelve fictional jobs and six fictional portfolios with planted traps, three conditions (skill, baseline and placebo), and two judges from a different model family scoring blind. The quiet test matters most: does it leave simple things simple?</p></div>
-    <div class="table-scroll"><table class="evidence-table bar-table"><thead><tr><th scope="col">Test</th><th scope="col">Passes if</th><th scope="col">Guards against</th></tr></thead><tbody>@@BENCHMARK@@</tbody></table></div>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Benchmark tests table"><table class="evidence-table bar-table"><thead><tr><th scope="col">Test</th><th scope="col">Passes if</th><th scope="col">Guards against</th></tr></thead><tbody>@@BENCHMARK@@</tbody></table></div>
     <p class="note anchor-note">Passing would show the skill behaves as designed in these exercises, not that capabilities shaped with it are more useful in the field. <a href="./docs/BENCHMARK.md">Read the full plan.</a></p>
   </section>
 

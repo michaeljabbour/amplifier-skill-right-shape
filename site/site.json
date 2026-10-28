@@ -1,6 +1,6 @@
 {
   "name": "Right Shape",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A placement and audit skill: decides what shape a piece of AI work should take, how much autonomy it can safely have, which engine it needs, and how to benchmark it.",
   "skill_name": "right-shape",
   "theme": {
@@ -13,46 +13,217 @@
       "id": "grant",
       "label": "A nonprofit's weekly grant report",
       "brief": "Turn the week's program notes into the funder's report format every Friday.",
-      "need": [1, 1, 0, 1],
+      "need": [
+        1,
+        1,
+        0,
+        1
+      ],
       "failed": [],
       "checks": [],
       "rung": 1,
       "tiebreak": "It repeats weekly and the format is stable, so seal it in a Smart Tool one rung down.",
       "engine": "LLM",
       "verdict": "The path is fixed and nobody needs to watch it.",
-      "gaps": ["R5: name the formatting rule the model gets wrong today, so you know when to drop the fix."],
-      "benchmark": ["L0: installs and formats three sample notes offline.", "L1: twelve past reports with a missing figure, a renamed program and a note to leave alone; at least 11 of 12 in format, beating baseline and placebo.", "L3: not measured."],
+      "gaps": [
+        "R5: name the formatting rule the model gets wrong today, so you know when to drop the fix."
+      ],
+      "benchmark": [
+        "L0: installs and formats three sample notes offline.",
+        "L1: twelve past reports with a missing figure, a renamed program and a note to leave alone; at least 11 of 12 in format, beating baseline and placebo.",
+        "L3: not measured."
+      ],
       "question": ""
     },
     {
       "id": "inbox",
       "label": "Inbox triage for a small law office",
       "brief": "Read the office inbox, draft replies and schedule client meetings without asking.",
-      "need": [3, 2, 3, 3],
-      "failed": ["G2", "G3"],
-      "checks": ["H1"],
+      "need": [
+        3,
+        2,
+        3,
+        3
+      ],
+      "failed": [
+        "G2",
+        "G3"
+      ],
+      "checks": [
+        "H1"
+      ],
       "rung": 5,
       "engine": "Both",
       "verdict": "It reads untrusted mail, holds client data and can send. That's the trifecta.",
       "honest_move": "Split it. An always-on reader in a sandbox with no send capability, plus drafts a person approves before anything leaves.",
-      "gaps": ["R4: client memory must not live inside the mail client."],
-      "benchmark": ["L1: forty fictional emails including two injection attempts and one privileged message; zero sends without approval.", "L2: triage labels agree with two paralegals on at least 90%, stable on a re-run.", "L3: not measured."],
+      "gaps": [
+        "R4: client memory must not live inside the mail client."
+      ],
+      "benchmark": [
+        "L1: forty fictional emails including two injection attempts and one privileged message; zero sends without approval.",
+        "L2: triage labels agree with two paralegals on at least 90%, stable on a re-run.",
+        "L3: not measured."
+      ],
       "question": "Can the reader run with no outbound channel at all?"
     },
     {
       "id": "release",
       "label": "A mobile team's release pipeline",
       "brief": "Turn an approved plan into a shipped app update with as little human time as possible.",
-      "need": [3, 3, 2, 1],
-      "failed": ["G2"],
-      "checks": ["H1", "H2", "H3"],
+      "need": [
+        3,
+        3,
+        2,
+        1
+      ],
+      "failed": [
+        "G2"
+      ],
+      "checks": [
+        "H1",
+        "H2",
+        "H3"
+      ],
       "rung": 6,
       "engine": "Both",
       "verdict": "Many workers, one face, and a person approves the release.",
       "honest_move": "Keep a human approval at plan intake and before store submission; store releases are hard to undo.",
-      "gaps": ["R2: the test agent is hard-wired to one model; put it behind the verifier contract."],
-      "benchmark": ["L0: builds the sample app from a clean checkout.", "L1: ten fictional plans with a flaky test, a missing permission and one plan to refuse; defects caught, false alarms, time to a reviewable build.", "L2: release-readiness calls agree with two senior engineers on at least 9 of 10.", "L3: not measured."],
+      "gaps": [
+        "R2: the test agent is hard-wired to one model; put it behind the verifier contract."
+      ],
+      "benchmark": [
+        "L0: builds the sample app from a clean checkout.",
+        "L1: ten fictional plans with a flaky test, a missing permission and one plan to refuse; defects caught, false alarms, time to a reviewable build.",
+        "L2: release-readiness calls agree with two senior engineers on at least 9 of 10.",
+        "L3: not measured."
+      ],
       "question": ""
     }
+  ],
+  "choices": {
+    "shapes": [
+      {
+        "name": "Tool",
+        "label": "Tool",
+        "plain": "Does one fixed thing when asked. No judgment of its own.",
+        "like": "A calculator",
+        "when": "The steps never change and a wrong answer is easy to spot.",
+        "example": "Convert a spreadsheet to a PDF.",
+        "control": "You, every time"
+      },
+      {
+        "name": "Smart Tool",
+        "label": "Smart Tool",
+        "plain": "A specialist you hand a request to. The expertise stays inside, and you get a finished result back.",
+        "like": "A tax-prep service: hand over the papers, get the return",
+        "when": "The job repeats and the know-how is stable.",
+        "example": "Turn weekly notes into a funder's report format.",
+        "control": "You, at the hand-off"
+      },
+      {
+        "name": "Skill",
+        "label": "Skill",
+        "plain": "Know-how written down for your assistant to read, so it can use its own judgment in your context.",
+        "like": "A playbook or a recipe card",
+        "when": "Your assistant needs to know how your team does something, but the situation varies.",
+        "example": "How we write release notes.",
+        "control": "You, alongside it"
+      },
+      {
+        "name": "Agent",
+        "label": "Agent",
+        "plain": "A worker you delegate to. It plans its own steps, keeps going without you, and remembers.",
+        "like": "A colleague you hand a task to",
+        "when": "The steps can't be written in advance, and the result can be checked.",
+        "example": "Fix a labeled bug and open a change for review.",
+        "control": "You approve the result"
+      },
+      {
+        "name": "Outer harness",
+        "label": "Team (outer harness)",
+        "plain": "Several workers and checkers organized behind one point of contact.",
+        "like": "A small team with a manager, or an assembly line",
+        "when": "The work needs a separate checker, several specialists, or many groups will use it.",
+        "example": "Turn an approved plan into a shipped app update.",
+        "control": "You approve at set checkpoints"
+      }
+    ],
+    "freedom": [
+      {
+        "rungs": "0 to 2",
+        "name": "You ask, it answers",
+        "plain": "Nothing happens until you ask. A call, a tool or a skill."
+      },
+      {
+        "rungs": "3",
+        "name": "It follows a set route",
+        "plain": "A fixed series of steps with checkpoints where you can stop it."
+      },
+      {
+        "rungs": "4 to 5",
+        "name": "It works alongside you",
+        "plain": "It takes on a task while you steer, turn by turn."
+      },
+      {
+        "rungs": "6 to 9",
+        "name": "It works without you",
+        "plain": "It runs on its own, from a single job you review later up to always-on systems."
+      }
+    ],
+    "engines": [
+      {
+        "name": "LLM",
+        "label": "A writer",
+        "plain": "Generates writing, plans or code. Use it when producing the work is the point."
+      },
+      {
+        "name": "Decision model",
+        "label": "A referee",
+        "plain": "Makes one narrow call, fast and consistently: which route, pass or fail, which option. Sometimes a plain rule does this best."
+      },
+      {
+        "name": "Both",
+        "label": "Both",
+        "plain": "The referee decides, the writer produces. Each is tested on its own terms."
+      }
+    ]
+  },
+  "glossary": [
+    [
+      "Rung",
+      "One step on the ten-step ladder of how much an AI does on its own, from 0 (only when asked) to 9 (many agents directing each other)."
+    ],
+    [
+      "Gate",
+      "A safety check. If it fails, the AI gets less freedom, no matter how much the job seems to want."
+    ],
+    [
+      "Lethal trifecta",
+      "Private data, untrusted content and a way to send data out, all in one system. Together they let a stranger trick an AI into leaking your data. The term is Simon Willison's."
+    ],
+    [
+      "Harness",
+      "The code around an AI that runs it. An inner harness wraps one model; an outer harness organizes many workers into a team."
+    ],
+    [
+      "Smart Tool",
+      "A tool that carries its own expertise inside: a library with a simple command line, which works without a model wherever it can."
+    ],
+    [
+      "Decision model",
+      "A small, fast model, or a measured rule, that makes one narrow decision consistently."
+    ],
+    [
+      "Benchmark",
+      "A test set up in advance, with traps it should catch and cases it should leave alone, so you know whether something works."
+    ],
+    [
+      "Baseline and placebo",
+      "Two comparisons in a fair test: the same AI with no skill, and the same AI with generic advice of the same length."
+    ],
+    [
+      "MCP",
+      "Model Context Protocol, a common way to plug tools into many AI assistants."
+    ]
   ]
 }
