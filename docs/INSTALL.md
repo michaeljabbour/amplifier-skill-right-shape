@@ -24,4 +24,4 @@ Download the complete ZIP from [the public site](https://michaeljabbour.github.i
 
 Bring one AI job, an existing capability or a repository portfolio. You get a placement card or an audit with source routes, limits and the next test.
 
-An automatic architecture approval. The validator checks arithmetic and coverage; people still verify the evidence.
+The validator checks arithmetic and coverage; reviewers verify the evidence and gate judgments.
