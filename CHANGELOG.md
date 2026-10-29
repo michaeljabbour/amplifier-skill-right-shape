@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-28 — Film sound
+
+- Remix the film so the score plays through without skips and ends on its own final chord instead of restarting under the end card. Smoother ducking under the voice, sound effects kept below the narrator, and crossfaded joins in the 15-second cut.
+
 ## 2026-10-28 — Public first use
 
 - Add a complete public clone/install path beside the first useful outcome, with prerequisites, safe updates and a full-folder ZIP alternative. Preserve the existing method, films and interactive examples.
