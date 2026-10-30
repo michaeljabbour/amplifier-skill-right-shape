@@ -69,7 +69,7 @@ class Page(HTMLParser):
 def source_files():
     for path in sorted(ROOT.rglob('*')):
         parts = path.relative_to(ROOT).parts
-        if path.is_file() and parts[0] not in {'.git', '_site'} and path.suffix in TEXT_SUFFIXES:
+        if path.is_file() and parts[0] not in {'.git', '_site', '.research'} and path.suffix in TEXT_SUFFIXES:
             yield path
 
 
@@ -79,7 +79,7 @@ def check_personal_information():
         text = path.read_text(encoding='utf-8', errors='ignore')
         for label, pattern in PII_PATTERNS.items():
             for match in pattern.finditer(text):
-                findings.append(f'{path.relative_to(ROOT)}: {label}: {match.group(0)}')
+                findings.append(f'{path.relative_to(ROOT)}: {label}: matched text withheld')
     assert not findings, 'Personal information or credentials found:\n' + '\n'.join(findings)
     return sum(1 for _ in source_files())
 

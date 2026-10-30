@@ -105,9 +105,11 @@ A good benchmark has at least one trap the capability should catch, one case it 
 ```
 <capability>/
   README.md              one-line promise, three install lines, what it will not do
-  project.json           name, version, kind, engine, surfaces, secret names
+  capability.json        schema version, stable id, public name, aliases, source pin,
+                         kind, engine/components, surfaces, secret names and dataflow
   AGENTS.md  CHANGELOG.md  LICENSE  Makefile   (build, check, eval)
-  skills/<name>/SKILL.md + references/       exactly one SKILL.md
+  skills/<name>/SKILL.md + references/       caller-applied methods only;
+                                             one canonical entry and complete resources
   bundle.md  behaviors/  modes/  recipes/    host surface, for example Amplifier
   src/  smart-tool.json  SMART_TOOL.md       Smart Tools only
   contracts/             versioned interfaces others may depend on
@@ -117,7 +119,13 @@ A good benchmark has at least one trap the capability should catch, one case it 
   site/                  static guide
 ```
 
-Rules: no private or unpublished dependencies; install in three commands at most; secrets come only from environment variables; one coherent job per capability; status claims need a dated record; every piece passes R1 to R5.
+Rules: no private or unpublished required dependencies; install in three commands at most; secrets come only from environment variables; one coherent job per capability; status claims need a dated record; every piece passes R1 to R5.
+
+Use one versioned `capability.json` as the canonical discovery and execution contract. Keep the stable promise id separate from the repository name, distribution, CLI/import/tool ids and host namespaces; preserve tested legacy aliases during a rename. A release version is recorded when established; otherwise require an exact source revision and payload digest rather than inventing a release. Existing `project.json` files may remain compatibility metadata, with an explicit canonical owner.
+
+A Skill supplies the standard Agent Skills folder, whose name matches its frontmatter name and whose resources travel together. Deterministic tools expose their real versioned library/CLI/MCP interface; do not manufacture a skill wrapper merely to populate a catalog. Bundles, modules and plugins are optional distribution surfaces, not new promises. Shared install/preview/doctor/uninstall logic belongs in one replaceable tool, not a copy in every capability.
+
+An installation preview states source pin, destinations, optional providers, permissions, secret names and dataflow. Installation uses owned receipts, refuses foreign or edited payloads, and supplies uninstall/rollback. Declared permissions and research instructions do not establish host enforcement. Verify discovery, complete-resource installation and behavioral use as separate stages on each claimed harness. Keep local market research ignored; check it at session start and refresh stale evidence or before positioning/naming work, with dated primary-source receipts and explicit unavailable sources.
 
 ## Dispositions
 

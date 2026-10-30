@@ -1,5 +1,13 @@
 # Changelog
 
+## Generic capability contract — 2026-10-30
+
+- Align the contract with the approved public capability identity: one versioned capability manifest, stable method/native interfaces, complete Agent Skills resources where applicable, shared preview/install/doctor/uninstall tooling, compatibility receipts and local research refresh. Keep autonomy gates and evaluation requirements unchanged.
+
+## Local repair — 2026-10-30
+
+- Honor the native site builder from the capability wrapper. Keep local-only market research outside release hygiene checks, and withhold matched credential text from diagnostics. Validate native dispatch and privacy boundaries without changing the method.
+
 ## 2026-10-28 — Film sound
 
 - Remix the film so the score plays through without skips and ends on its own final chord instead of restarting under the end card. Smoother ducking under the voice, sound effects kept below the narrator, and crossfaded joins in the 15-second cut.
